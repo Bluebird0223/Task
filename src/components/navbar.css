@@ -1,0 +1,105 @@
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+    padding: 40px 100px;
+    background-color: transparent;
+    z-index: 1000;
+    
+}
+.logo{
+    position: relative;
+    font-weight: 700;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+.list{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list>li{
+    position: relative;
+    list-style: none;
+}
+.list>li>a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.3s;
+}
+.banner{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../../public/tree-736885_1280.jpg);
+    background-size: cover;
+    /* z-index: -10; */
+}
+
+header.sticky{
+    padding: 5px 100px;
+    background-color: #fff;
+}
+header.sticky .logo{
+    
+    color: #000;
+}
+header.sticky ul li a{
+    color: #000;
+}
+
+.logo:hover{
+    color: crimson;
+}
+header.sticky .logo:hover{   
+    color: crimson;
+}
+.list>li>a:hover{
+    color: crimson;
+}
+
+header.sticky ul li a:hover{
+    color: crimson;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 50%; /* Adjust vertically as needed */
+    left: 50%; /* Adjust horizontally as needed */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .overlay h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  .overlay p {
+    font-size: 1.2em;
+  }
+  .overlay .search{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 15px; 
+    outline: none; 
+    background-color: transparent;
+    color: #ffffff; 
+   
+  }

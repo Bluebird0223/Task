@@ -1,0 +1,29 @@
+.about{
+    padding: 20px;
+    border: 1px solid #333;
+    margin: 20px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    color: rgb(22, 22, 22);
+
+}
+.a-button {
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .a-button:hover {
+    background-color: #110f1d;
+  }
+  
+  .heading{
+    font-size: 25px;
+    font-weight: 700px;
+  }

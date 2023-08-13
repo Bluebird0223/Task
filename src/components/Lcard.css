@@ -1,0 +1,59 @@
+.landscape-card {
+    margin: 20px;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 60px;
+
+  }
+.landscape-card2 {
+    margin: 20px;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    color: whitesmoke;
+    background-color: #181818;
+    margin-bottom: 20px;
+    padding: 60px;
+
+  }
+  
+  .landscape-image {
+    width: 40%;
+    padding: 10px;
+    object-fit: cover;
+  }
+  
+  .landscape-details {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .landscape-title {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .landscape-description {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .landscape-button {
+    background-color: crimson;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .landscape-button:hover {
+    background-color: #110f1d;
+  }
+  
