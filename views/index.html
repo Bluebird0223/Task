@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Data Processor</title>
+    <style>
+        body {
+            background-color: #496a8c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card p-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-4 mb-3">📊 Excel Data Processor</h1>
+                        <p class="lead text-muted">Upload Excel files, process data, and store in MongoDB</p>
+                    </div>
+
+                    <div class="text-center">
+                        <input type="file" id="fileInput" accept=".xlsx,.xls">
+                        <button onclick="uploadFile()">Upload</button>
+                    </div>
+
+                    <hr />
+
+                    <div class="text-center">
+                        <h2>Data</h2>
+                        <button onclick="viewData()">View Data</button>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Age</th>
+                                    <th>Department</th>
+                                    <th>Salary</th>
+                                    <th>Date of Joining</th>
+                                    <th>Status</th>
+                                    <th>Imported At</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Data will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const baseUrl = 'http://localhost:3000';
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file');
+                return;
+            }
+            const formData = new FormData();
+            formData.append('excelFile', file);
+            fetch(`${baseUrl}/api/data/upload`, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    alert('File uploaded successfully');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error uploading file');
+                });
+        }
+        async function viewData() {
+            const response = await fetch(`${baseUrl}/api/data`);
+            const data = await response.json();
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            data?.data.forEach((record, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${record.firstName || ''}</td>
+                    <td>${record.lastName || ''}</td>
+                    <td><a href="mailto:${record.email}">${record.email || ''}</a></td>
+                    <td>${record.age || ''}</td>
+                    <td><span class="badge bg-info">${record.department || 'N/A'}</span></td>
+                    <td>$${record.salary ? record.salary.toLocaleString() : '0'}</td>
+                    <td>${record.dateOfJoining ? new Date(record.dateOfJoining).toLocaleDateString() : 'N/A'}</td>
+                    <td>
+                        <span class="badge ${record.isActive ? 'bg-success' : 'bg-secondary'}">
+                            ${record.isActive ? 'Active' : 'Inactive'}
+                        </span>
+                    </td>
+                    <td>${new Date(record.importedAt).toLocaleString()}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+
+</html>
